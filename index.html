@@ -574,23 +574,12 @@
         <div class="menu-right">›</div>
       </div>
 
-      <div class="menu-item" onclick="openWaiter(event)" role="button">
-        <div class="menu-left">
-          <div class="menu-ic">🛎️</div>
-          <div class="menu-txt">
-            <div class="menu-name" id="mWaiterTitle">Позвать официанта</div>
-            <div class="menu-sub" id="mWaiterSub">Выбор стола • В ресторане</div>
-          </div>
-        </div>
-        <div class="menu-right">›</div>
-      </div>
-
       <div class="menu-item" onclick="toggleLegal()" role="button">
         <div class="menu-left">
           <div class="menu-ic">🏢</div>
           <div class="menu-txt">
             <div class="menu-name" id="mLegalTitle">Юр лицам</div>
-            <div class="menu-sub" id="mLegalSub">@villaggio_uz@gmail.com • +998 93 746-00-22</div>
+            <div class="menu-sub" id="mLegalSub">+998 87 634 39 39</div>
           </div>
         </div>
         <div class="menu-right">›</div>
@@ -600,16 +589,9 @@
         <div style="border:1px solid rgba(0,0,0,.08); border-radius:16px; overflow:hidden; background:rgba(0,0,0,.03); padding:12px;">
           <div style="font-weight:900; margin-bottom:6px;" id="legalLabel">🏢 Юр лицам</div>
 
-          <div style="font-weight:900; margin-bottom:6px;">📧 Email</div>
-          <a href="mailto:villaggio_uz" onclick="openEmail(event)" style="text-decoration:none; font-weight:900; color:var(--tile);">
-            villaggio_uz
-          </a>
-
-          <div style="height:12px;"></div>
-
           <div style="font-weight:900; margin-bottom:6px;">📞 Телефон</div>
-          <a href="tel:+998937460022" onclick="callLegalPhone(event)" style="text-decoration:none; font-weight:900; color:var(--tile);">
-            +998 93 746-00-22
+          <a href="tel:+998876343939" onclick="callLegalPhone(event)" style="text-decoration:none; font-weight:900; color:var(--tile);">
+            +998 87 634 39 39
           </a>
         </div>
       </div>
@@ -852,7 +834,7 @@ const MAPS_URL  = "https://yandex.uz/maps/org/villaggio/23039374865/?ll=66.95528
 const PHONE_RAW = "+998876343939";
 const PHONE_HUMAN = "+998 87 634 39 39";
 
-const LEGAL_EMAIL = "@villaggio_uz";
+const LEGAL_EMAIL = "";
 const LEGAL_PHONE_RAW = "+998876343939";
 const LEGAL_PHONE_HUMAN = "+998 87 634 39 39";
 
@@ -875,7 +857,7 @@ const UI = {
   ru:{
     brandSub:'pizza&more',
     menu:'Меню',
-    aboutTitle:'О кафе',
+    aboutTitle:'О ресторане',
     aboutSub:'Контакты, график, адрес',
     aboutAddr:'📍 Адрес / Отзывы',
     aboutPhone:'📞 Телефон',
@@ -897,10 +879,8 @@ const UI = {
     managerTitle:'Связаться с менеджером',
     managerSub:'@villaggio_uz',
     legalTitle:'Юр лицам',
-    legalSub:`${LEGAL_EMAIL} • ${LEGAL_PHONE_HUMAN}`,
-    waiterTitle:'Позвать официанта',
-    waiterSub:'Выбор стола • В ресторане',
-    kitchen:'Меню',
+    legalSub:`${LEGAL_PHONE_HUMAN}`,
+        kitchen:'Меню',
     bar:'Напитки',
     subcatsTitle:'Категории',
     subcatsHint:'Выберите подкатегорию',
@@ -928,7 +908,7 @@ const UI = {
   uz:{
     brandSub:'pizza&more',
     menu:'Menyu',
-    aboutTitle:'Kafe haqida',
+    aboutTitle:'Restoran haqida',
     aboutSub:"Kontaktlar, ish vaqti, manzil",
     aboutAddr:'📍 Manzil / Sharhlar',
     aboutPhone:'📞 Telefon',
@@ -950,10 +930,8 @@ const UI = {
     managerTitle:'Menejer bilan bog‘lanish',
     managerSub:'@villaggio_uz',
     legalTitle:'Yuridik shaxslar',
-    legalSub:`${LEGAL_EMAIL} • ${LEGAL_PHONE_HUMAN}`,
-    waiterTitle:'Ofitsiant chaqirish',
-    waiterSub:'Stol tanlash • Restoranda',
-    kitchen:'Menyu',
+    legalSub:`${LEGAL_PHONE_HUMAN}`,
+        kitchen:'Menyu',
     bar:'Ichimliklar',
     subcatsTitle:'Kategoriyalar',
     subcatsHint:'Pastki kategoriyani tanlang',
@@ -981,7 +959,7 @@ const UI = {
   en:{
     brandSub:'pizza&more',
     menu:'Menu',
-    aboutTitle:'About cafe',
+    aboutTitle:'About restaurant',
     aboutSub:'Contacts, hours, address',
     aboutAddr:'📍 Location / Reviews',
     aboutPhone:'📞 Phone',
@@ -1003,10 +981,8 @@ const UI = {
     managerTitle:'Contact manager',
     managerSub:'@villaggio_uz',
     legalTitle:'For companies',
-    legalSub:`${LEGAL_EMAIL} • ${LEGAL_PHONE_HUMAN}`,
-    waiterTitle:'Call waiter',
-    waiterSub:'Choose table • In restaurant',
-    kitchen:'Menu',
+    legalSub:`${LEGAL_PHONE_HUMAN}`,
+        kitchen:'Menu',
     bar:'Drinks',
     subcatsTitle:'Categories',
     subcatsHint:'Choose a subcategory',
@@ -1056,10 +1032,8 @@ const UI = {
     managerTitle:'Contatta il manager',
     managerSub:'@villaggio_uz',
     legalTitle:'Per persone giuridiche',
-    legalSub:`${LEGAL_EMAIL} • ${LEGAL_PHONE_HUMAN}`,
-    waiterTitle:'Chiama il cameriere',
-    waiterSub:'Scelta tavolo • Nel ristorante',
-    kitchen:'Menu',
+    legalSub:`${LEGAL_PHONE_HUMAN}`,
+        kitchen:'Menu',
     bar:'Bevande',
     subcatsTitle:'Categorie',
     subcatsHint:'Scegli una categoria',
@@ -1127,26 +1101,54 @@ let fulfillment = 'delivery';
 let paymentMethod = 'cash';
 
 function mkFood(id, name, meta, price, catKey){
-  const catName = CATEGORY_LABELS?.[catKey]?.[lang] || catKey;
   const metaText = meta ? String(meta) : '';
+  const names = (typeof name === 'object') ? name : {ru:name, uz:name, en:name, it:name};
+  const catNames = CATEGORY_LABELS?.[catKey] || {};
   return {
     id,
     p: Number(price)||0,
     meta: metaText,
     img: `images/${id}.jpg`,
-    n: {ru:name, uz:name, en:name, it:name},
+    n: {
+      ru: names.ru || names.en || names.it || names.uz || id,
+      uz: names.uz || names.ru || names.en || names.it || id,
+      en: names.en || names.ru || names.uz || names.it || id,
+      it: names.it || names.en || names.ru || names.uz || id
+    },
     desc: {
-      ru: `Категория: ${catName}\n${UI.ru.metaPrefix}: ${metaText || '—'}\n\nДобавьте в корзину и нажмите “${UI.ru.order}”.`,
-      uz: `Kategoriya: ${catName}\n${UI.uz.metaPrefix}: ${metaText || '—'}\n\nSavatga qo‘shing va “${UI.uz.order}” tugmasini bosing.`,
-      en: `Category: ${catName}\n${UI.en.metaPrefix}: ${metaText || '—'}\n\nAdd to cart and press “${UI.en.order}”.`,
-      it: `Categoria: ${catName}\n${UI.it.metaPrefix}: ${metaText || '—'}\n\nAggiungi al carrello e premi “${UI.it.order}”.`
+      ru: `Категория: ${catNames.ru || catKey}
+${UI.ru.metaPrefix}: ${metaText || '—'}
+
+Добавьте в корзину и нажмите “${UI.ru.order}”.`,
+      uz: `Kategoriya: ${catNames.uz || catKey}
+${UI.uz.metaPrefix}: ${metaText || '—'}
+
+Savatga qo‘shing va “${UI.uz.order}” tugmasini bosing.`,
+      en: `Category: ${catNames.en || catKey}
+${UI.en.metaPrefix}: ${metaText || '—'}
+
+Add to cart and press “${UI.en.order}”.`,
+      it: `Categoria: ${catNames.it || catKey}
+${UI.it.metaPrefix}: ${metaText || '—'}
+
+Aggiungi al carrello e premi “${UI.it.order}”.`
     }
   };
 }
 
 const MENU = {
-  sides: [],
-  breakfast: [],
+  sides: [
+    mkFood('side_kartofel_derevenskiy_200', {ru:'Картофель по деревенски', uz:'Qishloqcha kartoshka', en:'Country-style potatoes', it:'Patate rustiche'}, '200 гр', 25000, 'sides'),
+    mkFood('side_kartofel_fri_200', {ru:'Картофель Фри', uz:'Fri kartoshka', en:'French fries', it:'Patatine fritte'}, '200 гр', 25000, 'sides')
+  ],
+  breakfast: [
+    mkFood('breakfast_english_360', {ru:'Английский завтрак', uz:'Inglizcha nonushta', en:'English breakfast', it:'Colazione inglese'}, '360 гр', 78000, 'breakfast'),
+    mkFood('breakfast_villaggio_350', {ru:'Завтрак Villaggio', uz:'Villaggio nonushtasi', en:'Villaggio breakfast', it:'Colazione Villaggio'}, '350 гр', 55000, 'breakfast'),
+    mkFood('breakfast_french_250', {ru:'Французский завтрак', uz:'Fransuzcha nonushta', en:'French breakfast', it:'Colazione francese'}, '250 гр', 68000, 'breakfast'),
+    mkFood('porridge_oat_berry_250', {ru:'Овсяная каша ягодная', uz:'Rezavorli suli bo‘tqasi', en:'Berry oatmeal porridge', it:'Porridge d’avena ai frutti di bosco'}, '250 гр', 37000, 'breakfast'),
+    mkFood('crepes_berry_confit_250', {ru:'Крипсы с ягодным конфитюром', uz:'Rezavor konfiturli kripslar', en:'Crepes with berry confiture', it:'Crêpes con confettura ai frutti di bosco'}, '250 гр', 34000, 'breakfast'),
+    mkFood('crepes_orange_confit_250', {ru:'Крипсы с апельсиновым конфитюром', uz:'Apelsin konfiturli kripslar', en:'Crepes with orange confiture', it:'Crêpes con confettura d’arancia'}, '250 гр', 34000, 'breakfast')
+  ],
   pasta: [],
   pizza: [],
   ravioli: [],
@@ -1203,10 +1205,6 @@ function applyUI(){
   if(mLegT) mLegT.innerText = UI[lang].legalTitle;
   if(mLegS) mLegS.innerText = UI[lang].legalSub;
 
-  const mWTitle = document.getElementById('mWaiterTitle');
-  const mWSub   = document.getElementById('mWaiterSub');
-  if(mWTitle) mWTitle.innerText = UI[lang].waiterTitle;
-  if(mWSub)   mWSub.innerText   = UI[lang].waiterSub;
 
   searchTitle.innerText = UI[lang].searchResults;
 
@@ -1246,11 +1244,11 @@ function applyUI(){
 
   onlineDetails.innerText = UI[lang].onlineDetails;
 
-  waiterTitle.innerText = UI[lang].waiterSheetTitle;
-  waiterInRestLabel.innerText = UI[lang].inRest;
-  tableLabel.innerText = UI[lang].table;
-  waiterBtn.innerText = UI[lang].call;
-  waiterNote.innerText = UI[lang].waiterNote;
+  if(window.waiterTitle) waiterTitle.innerText = UI[lang].waiterSheetTitle;
+  if(window.waiterInRestLabel) waiterInRestLabel.innerText = UI[lang].inRest;
+  if(window.tableLabel) tableLabel.innerText = UI[lang].table;
+  if(window.waiterBtn) waiterBtn.innerText = UI[lang].call;
+  if(window.waiterNote) waiterNote.innerText = UI[lang].waiterNote;
 
   const d = document.getElementById('aboutDescText');
   if(d){
