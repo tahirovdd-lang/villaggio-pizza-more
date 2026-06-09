@@ -1634,6 +1634,13 @@ function normalizePhone(p){
   return String(p||'').replace(/[^\d+]/g,'').trim();
 }
 
+function getPaymentLabel(){
+  if(paymentMethod === 'cash') return 'Наличные';
+  if(paymentMethod === 'click') return 'Click';
+  if(paymentMethod === 'online') return 'Online';
+  return paymentMethod || 'Не указан';
+}
+
 function sendOrder(){
   const items=[];
   for(const id in cart){
@@ -1683,6 +1690,9 @@ function sendOrder(){
     address: (fulfillment==='delivery') ? (addrInput.value||'').trim() : null,
 
     payment_method: paymentMethod,
+    payment_type: getPaymentLabel(),
+    payment_label: getPaymentLabel(),
+    payment_text: `Тип оплаты: ${getPaymentLabel()}`,
     payment_data: (paymentMethod==='online' || paymentMethod==='click')
       ? {receiver: ONLINE_PAY.receiver, card: ONLINE_PAY.card, click_qr: (paymentMethod==='click') ? 'images/CLICK_QR.jpg' : null}
       : null,
