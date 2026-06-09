@@ -568,7 +568,7 @@
           <div class="menu-ic">💬</div>
           <div class="menu-txt">
             <div class="menu-name" id="mManagerTitle">Связаться с менеджером</div>
-            <div class="menu-sub" id="mManagerSub">Telegram</div>
+            <div class="menu-sub" id="mManagerSub">@villaggio_uz</div>
           </div>
         </div>
         <div class="menu-right">›</div>
@@ -750,7 +750,7 @@
     <button class="btn" id="langRU" onclick="setLang('ru',this)"><span class="lang-flag">🇷🇺</span>RU</button>
     <button class="btn" id="langUZ" onclick="setLang('uz',this)"><span class="lang-flag">🇺🇿</span>UZ</button>
     <button class="btn" id="langEN" onclick="setLang('en',this)"><span class="lang-flag">🇬🇧</span>EN</button>
-    <button class="btn" id="langTR" onclick="setLang('tr',this)"><span class="lang-flag">🇹🇷</span>TR</button>
+    <button class="btn" id="langIT" onclick="setLang('it',this)"><span class="lang-flag">🇮🇹</span>IT</button>
   </div>
 
   <div class="categories" id="cats"></div>
@@ -852,12 +852,12 @@ const MAPS_URL  = "https://yandex.uz/maps/org/villaggio/23039374865/?ll=66.95528
 const PHONE_RAW = "+998876343939";
 const PHONE_HUMAN = "+998 87 634 39 39";
 
-const LEGAL_EMAIL = "villaggio_uz";
+const LEGAL_EMAIL = "@villaggio_uz";
 const LEGAL_PHONE_RAW = "+998876343939";
 const LEGAL_PHONE_HUMAN = "+998 87 634 39 39";
 
-const MANAGER_ID = 6013591658;
-const MANAGER_USERNAME = "";
+const MANAGER_ID = 0;
+const MANAGER_USERNAME = "@villaggio_uz";
 
 const CLICK_QR_IMG = "images/CLICK_QR.jpg";
 
@@ -895,7 +895,7 @@ const UI = {
     nothing:'Ничего не найдено',
     mapsBtn:'📍 Открыть геолокацию и отзывы (Яндекс Карты)',
     managerTitle:'Связаться с менеджером',
-    managerSub:'Telegram',
+    managerSub:'@villaggio_uz',
     legalTitle:'Юр лицам',
     legalSub:`${LEGAL_EMAIL} • ${LEGAL_PHONE_HUMAN}`,
     waiterTitle:'Позвать официанта',
@@ -948,7 +948,7 @@ const UI = {
     nothing:"Hech narsa topilmadi",
     mapsBtn:"📍 Geolokatsiya va sharhlar (Yandex Maps)",
     managerTitle:'Menejer bilan bog‘lanish',
-    managerSub:'Telegram',
+    managerSub:'@villaggio_uz',
     legalTitle:'Yuridik shaxslar',
     legalSub:`${LEGAL_EMAIL} • ${LEGAL_PHONE_HUMAN}`,
     waiterTitle:'Ofitsiant chaqirish',
@@ -1001,7 +1001,7 @@ const UI = {
     nothing:'Nothing found',
     mapsBtn:'📍 Open location & reviews (Yandex Maps)',
     managerTitle:'Contact manager',
-    managerSub:'Telegram',
+    managerSub:'@villaggio_uz',
     legalTitle:'For companies',
     legalSub:`${LEGAL_EMAIL} • ${LEGAL_PHONE_HUMAN}`,
     waiterTitle:'Call waiter',
@@ -1031,58 +1031,59 @@ const UI = {
     waiterNote:'We will send the request with the table number.',
     reqTable:'Choose table'
   },
-  tr:{
+  it:{
     brandSub:'pizza&more',
-    menu:'Menü',
-    aboutTitle:'Kafe hakkında',
-    aboutSub:'İletişim, saatler, adres',
-    aboutAddr:'📍 Konum / Yorumlar',
-    aboutPhone:'📞 Telefon',
-    aboutHours:'🕒 Çalışma saatleri',
-    callTitle:'Ara',
-    instaSub:'Instagram’ı aç',
-    searchResults:'Arama sonuçları',
-    cart:'🛒 Sepet',
-    total:'Toplam',
-    order:'Siparişi onayla',
-    comment:'✍️ Not (ör: adres/saat)',
+    menu:'Menu',
+    aboutTitle:'Informazioni sul ristorante',
+    aboutSub:'Contatti, orari, indirizzo',
+    aboutAddr:'📍 Indirizzo / Recensioni',
+    aboutPhone:'📞 Telefono',
+    aboutHours:'🕒 Orari di lavoro',
+    callTitle:'Chiama',
+    instaSub:'Apri Instagram',
+    searchResults:'Risultati della ricerca',
+    cart:'🛒 Carrello',
+    total:'Totale',
+    order:'Effettua ordine',
+    comment:'✍️ Commento (es. piano/riferimento/orario)',
     sum:'sum',
-    empty:'Sepet boş',
-    welcome:'👋 Hoş geldiniz',
-    metaPrefix:'Porsiyon / Hacim',
-    price:'Fiyat',
-    nothing:'Sonuç bulunamadı',
-    mapsBtn:'📍 Konum ve yorumlar (Yandex Maps)',
-    managerTitle:'Yönetici ile iletişim',
-    managerSub:'Telegram',
-    legalTitle:'Şirketler için',
+    empty:'Il carrello è vuoto',
+    welcome:'👋 Benvenuto',
+    metaPrefix:'Porzione / Volume',
+    price:'Prezzo',
+    nothing:'Nessun risultato',
+    mapsBtn:'📍 Apri posizione e recensioni (Yandex Maps)',
+    managerTitle:'Contatta il manager',
+    managerSub:'@villaggio_uz',
+    legalTitle:'Per persone giuridiche',
     legalSub:`${LEGAL_EMAIL} • ${LEGAL_PHONE_HUMAN}`,
-    waiterTitle:'Garson çağır',
-    waiterSub:'Masa seçimi • Restoranda',
-    kitchen:'Menü',
-    bar:'İçecekler',
-    subcatsTitle:'Kategoriler',
-    subcatsHint:'Alt kategori seçin',
-    deliveryTitle:'Teslimat şekli',
-    delivery:'🚚 Teslimat',
-    pickup:'🏃 Gel-al',
-    phonePH:'📞 Telefon numarası',
-    addrPH:'📍 Teslimat adresi',
-    payTitle:'Ödeme yöntemi',
-    cash:'💵 Nakit',
+    waiterTitle:'Chiama il cameriere',
+    waiterSub:'Scelta tavolo • Nel ristorante',
+    kitchen:'Menu',
+    bar:'Bevande',
+    subcatsTitle:'Categorie',
+    subcatsHint:'Scegli una categoria',
+    deliveryTitle:'Metodo di ricezione',
+    delivery:'🚚 Consegna',
+    pickup:'🏃 Ritiro',
+    phonePH:'📞 Numero di telefono',
+    addrPH:'📍 Indirizzo di consegna',
+    payTitle:'Metodo di pagamento',
+    cash:'💵 Contanti',
     click:'🟢 Click',
     online:'💳 Online',
-    payClickTitle:'Click ödeme',
-    payQrHint:'Ödeme için QR kodu okutun',
-    onlineDetails:`Alıcı: ${ONLINE_PAY.receiver}\nKart No: ${ONLINE_PAY.card}`,
-    reqPhone:'Telefon numarası girin',
-    reqAddr:'Teslimat adresi girin',
-    waiterSheetTitle:'Garson çağır',
-    inRest:'Misafir restoranda',
-    table:'Masa seçin',
-    call:'🛎️ Çağır',
-    waiterNote:'İstek masa numarasıyla gönderilecek.',
-    reqTable:'Masa seçin'
+    payClickTitle:'Pagamento Click',
+    payQrHint:'Scansiona il QR per pagare',
+    onlineDetails:`Destinatario: ${ONLINE_PAY.receiver}
+Numero carta: ${ONLINE_PAY.card}`,
+    reqPhone:'Inserisci il numero di telefono',
+    reqAddr:'Inserisci l’indirizzo di consegna',
+    waiterSheetTitle:'Chiama il cameriere',
+    inRest:'Ospite nel ristorante',
+    table:'Scegli il tavolo',
+    call:'🛎️ Chiama',
+    waiterNote:'Invieremo la richiesta con il numero del tavolo.',
+    reqTable:'Scegli il tavolo'
   }
 };
 
@@ -1104,14 +1105,14 @@ function formatSum(x){
 }
 
 const CATEGORY_LABELS = {
-  sides:       {ru:'Гарниры', uz:'Garnirlar', en:'Sides', tr:'Garnitür'},
-  breakfast:   {ru:'Завтрак', uz:'Nonushta', en:'Breakfast', tr:'Kahvaltı'},
-  pasta:       {ru:'Паста', uz:'Pasta', en:'Pasta', tr:'Makarna'},
-  pizza:       {ru:'Пицца', uz:'Pitsa', en:'Pizza', tr:'Pizza'},
-  ravioli:     {ru:'Равиоли', uz:'Ravioli', en:'Ravioli', tr:'Ravioli'},
-  salads:      {ru:'Салаты', uz:'Salatlar', en:'Salads', tr:'Salatalar'},
-  soups:       {ru:'Супы', uz:'Sho‘rvalar', en:'Soups', tr:'Çorbalar'},
-  cold_drinks: {ru:'Холодные напитки', uz:'Sovuq ichimliklar', en:'Cold drinks', tr:'Soğuk içecekler'}
+  sides:       {ru:'Гарниры', uz:'Garnirlar', en:'Sides', it:'Contorni'},
+  breakfast:   {ru:'Завтрак', uz:'Nonushta', en:'Breakfast', it:'Colazione'},
+  pasta:       {ru:'Паста', uz:'Pasta', en:'Pasta', it:'Pasta'},
+  pizza:       {ru:'Пицца', uz:'Pitsa', en:'Pizza', it:'Pizza'},
+  ravioli:     {ru:'Равиоли', uz:'Ravioli', en:'Ravioli', it:'Ravioli'},
+  salads:      {ru:'Салаты', uz:'Salatlar', en:'Salads', it:'Insalate'},
+  soups:       {ru:'Супы', uz:'Sho‘rvalar', en:'Soups', it:'Zuppe'},
+  cold_drinks: {ru:'Холодные напитки', uz:'Sovuq ichimliklar', en:'Cold drinks', it:'Bevande fredde'}
 };
 
 const GROUPS = {
@@ -1133,180 +1134,26 @@ function mkFood(id, name, meta, price, catKey){
     p: Number(price)||0,
     meta: metaText,
     img: `images/${id}.jpg`,
-    n: {ru:name, uz:name, en:name, tr:name},
+    n: {ru:name, uz:name, en:name, it:name},
     desc: {
       ru: `Категория: ${catName}\n${UI.ru.metaPrefix}: ${metaText || '—'}\n\nДобавьте в корзину и нажмите “${UI.ru.order}”.`,
       uz: `Kategoriya: ${catName}\n${UI.uz.metaPrefix}: ${metaText || '—'}\n\nSavatga qo‘shing va “${UI.uz.order}” tugmasini bosing.`,
       en: `Category: ${catName}\n${UI.en.metaPrefix}: ${metaText || '—'}\n\nAdd to cart and press “${UI.en.order}”.`,
-      tr: `Kategori: ${catName}\n${UI.tr.metaPrefix}: ${metaText || '—'}\n\nSepete ekleyin ve “${UI.tr.order}” butonuna basın.`
+      it: `Categoria: ${catName}\n${UI.it.metaPrefix}: ${metaText || '—'}\n\nAggiungi al carrello e premi “${UI.it.order}”.`
     }
   };
 }
 
 const MENU = {
-  salads: [
-    mkFood('salad_svezhiy', 'Свежий', '', 30000, 'salads'),
-    mkFood('salad_achichuk', 'Ачичук', '', 30000, 'salads'),
-    mkFood('salad_mazhnuntol', 'Мажнунтол', '', 50000, 'salads'),
-    mkFood('salad_baklazhany_khrust', 'Салат с хрустящими баклажанами', '', 40000, 'salads'),
-    mkFood('salad_tashkent', 'Ташкент', '', 50000, 'salads'),
-    mkFood('salad_anzhir', 'Анжир', '', 50000, 'salads'),
-    mkFood('salad_vesenniy', 'Весенний', '', 30000, 'salads')
-  ],
-  snacks: [
-    mkFood('snack_svezhie_ovoshi_zelen', 'Свежие овощи с зеленью', '', 60000, 'snacks'),
-    mkFood('snack_ovoshi_dom_posol', 'Овощи домашнего посола', '', 70000, 'snacks'),
-    mkFood('snack_myasnoe_assorti', 'Мясное ассорти', '', 100000, 'snacks'),
-    mkFood('snack_dolma', 'Долма', '', 70000, 'snacks'),
-    mkFood('snack_chakka_assorti', 'Чакка Ассорти', '', 30000, 'snacks')
-  ],
-  soups: [
-    mkFood('soup_shurpa_nut', 'Шурпа с нутом', '', 50000, 'soups'),
-    mkFood('soup_mashkhurda', 'Машхурда', '', 50000, 'soups'),
-    mkFood('soup_mampar_veg', 'Мампар Вегетарианский', '', 40000, 'soups'),
-    mkFood('soup_lagman', 'Лагман', '', 50000, 'soups'),
-    mkFood('soup_kuriny_lapsha', 'Куриный с домашней лапшой', '', 40000, 'soups'),
-    mkFood('soup_mastava', 'Мастава', '', 50000, 'soups')
-  ],
-  hot: [
-    mkFood('hot_plov_05', 'Плов', '0.5 порция', 50000, 'hot'),
-    mkFood('hot_plov_07', 'Плов', '0.7 порция', 70000, 'hot'),
-    mkFood('hot_plov_1',  'Плов', '1 порция', 100000, 'hot'),
-    mkFood('hot_manti_govyadina_1', 'Манты с говядиной 1 шт', '', 10000, 'hot'),
-    mkFood('hot_manti_tykva', 'Манты с тыквой (сезонные)', '', 10000, 'hot'),
-    mkFood('hot_manti_zelen', 'Манты с зеленью (сезонные)', '', 10000, 'hot'),
-    mkFood('hot_samsa_govyadina', 'Самса с говядиной', '', 12000, 'hot'),
-    mkFood('hot_samsa_tykva', 'Самса с тыквой (сезонные)', '', 12000, 'hot'),
-    mkFood('hot_samsa_zelen', 'Самса с зеленью (сезонные)', '', 12000, 'hot'),
-    mkFood('hot_zharkoe_kurica', 'Жаркое с курицей', '', 80000, 'hot'),
-    mkFood('hot_zhizbiz_05', 'Жиз-биз из говядины', '0.5 порция', 250000, 'hot'),
-    mkFood('hot_zhizbiz_1',  'Жиз-биз из говядины', '1 порция', 500000, 'hot'),
-    mkFood('hot_tuy_kabob', 'Туй кабоб', '', 150000, 'hot'),
-    mkFood('hot_zhareny_lagman', 'Жареный лагман', '', 70000, 'hot')
-  ],
-  bread: [
-    mkFood('bread_assorti', 'Ассорти', '', 25000, 'bread'),
-    mkFood('bread_chapchak', 'Чапчак', '', 10000, 'bread')
-  ],
-  sauces: [
-    mkFood('sauce_soevy', 'Соевый', '', 10000, 'sauces'),
-    mkFood('sauce_chesnochny', 'Чесночный', '', 10000, 'sauces'),
-    mkFood('sauce_tomatny', 'Томатный', '', 10000, 'sauces'),
-    mkFood('sauce_lazdzhan', 'Лазджан', '', 10000, 'sauces')
-  ],
-  sides: [
-    mkFood('side_ris', 'Рис', '', 20000, 'sides'),
-    mkFood('side_ris_ovoshi', 'Рис с овощами', '', 25000, 'sides'),
-    mkFood('side_kartofel_fri', 'Картофель фри', '', 20000, 'sides'),
-    mkFood('side_kartofel_derev', 'Картофель по деревенски', '', 20000, 'sides'),
-    mkFood('side_pure', 'Картофельное пюре', '', 20000, 'sides')
-  ],
-  desserts: [
-    mkFood('dessert_trubochka_sgush', 'Трубочка со сгущонкой', '', 10000, 'desserts'),
-    mkFood('dessert_ekler', 'Эклер', '', 15000, 'desserts'),
-    mkFood('dessert_keks', 'Кекс', '', 10000, 'desserts'),
-    mkFood('dessert_trubochka_tvorog', 'Трубочка с творогом', '', 7000, 'desserts')
-  ],
-  coffee: [
-    mkFood('coffee_turka', 'Кофе в турке', '', 20000, 'coffee'),
-    mkFood('coffee_espresso', 'Эспрессо', '', 25000, 'coffee'),
-    mkFood('coffee_double_espresso', 'Двойной эспрессо', '', 30000, 'coffee'),
-    mkFood('coffee_cappuccino', 'Капучино', '', 35000, 'coffee'),
-    mkFood('coffee_latte', 'Латте', '', 35000, 'coffee'),
-    mkFood('coffee_raf', 'Раф', '', 40000, 'coffee'),
-    mkFood('coffee_flat_white', 'Флэт Уайт', '', 35000, 'coffee'),
-    mkFood('coffee_espresso_macchiato', 'Эспрессо макиата', '', 25000, 'coffee'),
-    mkFood('coffee_cacao', 'Какао', '', 35000, 'coffee'),
-    mkFood('coffee_syrups', 'Сиропы', 'добавка', 3000, 'coffee')
-  ],
-  tea: [
-    mkFood('tea_black_05', 'Черный', '0.5 L', 20000, 'tea'),
-    mkFood('tea_green_05', 'Зеленый', '0.5 L', 20000, 'tea'),
-    mkFood('tea_lemon_05', 'Чай с лимоном', '0.5 L', 25000, 'tea'),
-    mkFood('tea_moroccan_05', 'Марокканский', '0.5 L', 40000, 'tea'),
-    mkFood('tea_fruit_05', 'Фруктовый', '0.5 L', 40000, 'tea'),
-    mkFood('tea_berry_05', 'Ягодный', '0.5 L', 40000, 'tea'),
-    mkFood('tea_sea_buckthorn_05', 'Облепиховый', '0.5 L', 40000, 'tea'),
-    mkFood('tea_jasmine_05', 'Жасминовый', '0.5 L', 30000, 'tea'),
-    mkFood('tea_mulled_na_03', 'Глинтвейн (б/а)', '0.3 L', 40000, 'tea')
-  ],
-  fresh: [
-    mkFood('fresh_orange_03', 'Апельсиновый', '0.3 L', 60000, 'fresh'),
-    mkFood('fresh_carrot_03', 'Морковный', '0.3 L', 30000, 'fresh'),
-    mkFood('fresh_apple_03', 'Яблочный', '0.3 L', 40000, 'fresh'),
-    mkFood('fresh_grapefruit_03', 'Грейпфрутовый', '0.3 L', 60000, 'fresh'),
-    mkFood('fresh_carrot_apple_03', 'Морковно-яблочный', '0.3 L', 40000, 'fresh'),
-    mkFood('fresh_watermelon_03', 'Арбузный (сезонный)', '0.3 L', 40000, 'fresh'),
-    mkFood('fresh_lemon_03', 'Лимонный', '0.3 L', 50000, 'fresh'),
-    mkFood('fresh_grapefruit_carrot_03', 'Грейпфрутово-морковный', '0.3 L', 50000, 'fresh'),
-    mkFood('fresh_pomegranate_03', 'Гранатовый', '0.3 L', 50000, 'fresh')
-  ],
-  lemonades: [
-    mkFood('lemonade_tarkhun_04', 'Тархун', '0.4 L', 30000, 'lemonades'),
-    mkFood('lemonade_tarkhun_1', 'Тархун', '1 L', 60000, 'lemonades'),
-    mkFood('lemonade_apple_joy_04', 'Яблочное наслаждение', '0.4 L', 50000, 'lemonades'),
-    mkFood('lemonade_apple_joy_1', 'Яблочное наслаждение', '1 L', 100000, 'lemonades'),
-    mkFood('lemonade_turkish_04', 'Турецкий', '0.4 L', 30000, 'lemonades'),
-    mkFood('lemonade_turkish_1', 'Турецкий', '1 L', 60000, 'lemonades'),
-    mkFood('lemonade_exotic_04', 'Экзотический', '0.4 L', 30000, 'lemonades'),
-    mkFood('lemonade_exotic_1', 'Экзотический', '1 L', 60000, 'lemonades'),
-    mkFood('lemonade_mojito_04', 'Мохито', '0.4 L', 30000, 'lemonades'),
-    mkFood('lemonade_mojito_1', 'Мохито', '1 L', 60000, 'lemonades'),
-    mkFood('lemonade_strawberry_mojito_04', 'Клубничный мохито', '0.4 L', 35000, 'lemonades'),
-    mkFood('lemonade_strawberry_mojito_1', 'Клубничный мохито', '1 L', 65000, 'lemonades'),
-    mkFood('lemonade_homemade_berry_04', 'Домашний ягодный', '0.4 L', 30000, 'lemonades'),
-    mkFood('lemonade_homemade_berry_1', 'Домашний ягодный', '1 L', 60000, 'lemonades'),
-    mkFood('lemonade_homemade_citrus_04', 'Домашний цитрусовый', '0.4 L', 30000, 'lemonades'),
-    mkFood('lemonade_homemade_citrus_1', 'Домашний цитрусовый', '1 L', 60000, 'lemonades')
-  ],
-  milkshake: [
-    mkFood('milkshake_vanilla_03', 'Ванильный', '0.3 L', 40000, 'milkshake'),
-    mkFood('milkshake_banana_03', 'Банановый', '0.3 L', 50000, 'milkshake'),
-    mkFood('milkshake_raspberry_03', 'Малиновый', '0.3 L', 50000, 'milkshake'),
-    mkFood('milkshake_strawberry_03', 'Клубничный', '0.3 L', 50000, 'milkshake'),
-    mkFood('milkshake_chocolate_03', 'Шоколадный', '0.3 L', 50000, 'milkshake'),
-    mkFood('milkshake_choc_banana_03', 'Шоколадно-банановый', '0.3 L', 50000, 'milkshake')
-  ],
-  drinks: [
-    mkFood('drink_adrenaline_025', 'Adrenaline Rush', '0.25 L', 15000, 'drinks'),
-    mkFood('drink_adrenaline_049', 'Adrenaline Rush', '0.49 L', 20000, 'drinks'),
-    mkFood('drink_viko_1', 'Сок VIKO', '1 L', 25000, 'drinks'),
-    mkFood('drink_redbull_025', 'Red Bull', '0.25 L', 35000, 'drinks'),
-    mkFood('drink_7up_025', '7Up', '0.25 L', 15000, 'drinks'),
-    mkFood('drink_mirinda_025', 'Mirinda', '0.25 L', 15000, 'drinks'),
-    mkFood('drink_mirinda_1', 'Mirinda', '1 L', 20000, 'drinks'),
-    mkFood('drink_pepsi_025', 'Pepsi', '0.25 L', 15000, 'drinks'),
-    mkFood('drink_pepsi_1', 'Pepsi', '1 L', 20000, 'drinks')
-  ],
-  mineral: [
-    mkFood('water_chortoq_05', 'Chortoq', '0.5 L', 25000, 'mineral'),
-    mkFood('water_blanc_bleu_05', 'Blanc Bleu (газ/безгаз)', '0.5 L', 25000, 'mineral'),
-    mkFood('water_karlovy_vary_05', 'Karlovy Vary', '0.5 L', 25000, 'mineral'),
-    mkFood('water_evita_1', 'Эвита (газ/безгаз)', '1 L', 10000, 'mineral'),
-    mkFood('water_borjomi_033', 'Боржоми', '0.33 L', 20000, 'mineral'),
-    mkFood('water_borjomi_05', 'Боржоми', '0.5 L', 25000, 'mineral'),
-    mkFood('water_borjomi_pear_05', 'Боржоми Груша', '0.5 L', 25000, 'mineral'),
-    mkFood('water_borjomi_mandarin_05', 'Боржоми Мандарин', '0.5 L', 25000, 'mineral'),
-    mkFood('water_borjomi_citrus_033', 'Боржоми Цитрус', '0.33 L', 20000, 'mineral'),
-    mkFood('water_borjomi_citrus_05', 'Боржоми Цитрус', '0.5 L', 25000, 'mineral'),
-    mkFood('water_borjomi_tarkhun_05', 'Боржоми Тархун', '0.5 L', 25000, 'mineral')
-  ]
+  sides: [],
+  breakfast: [],
+  pasta: [],
+  pizza: [],
+  ravioli: [],
+  salads: [],
+  soups: [],
+  cold_drinks: []
 };
-
-
-// Категории Villaggio pizza&more.
-// Позиции можно добавлять внутрь нужной категории через mkFood(id, name, meta, price, categoryKey).
-MENU.breakfast = MENU.breakfast || [];
-MENU.pasta = MENU.pasta || [];
-MENU.pizza = MENU.pizza || [];
-MENU.ravioli = MENU.ravioli || [];
-MENU.cold_drinks = [
-  ...(MENU.fresh || []),
-  ...(MENU.lemonades || []),
-  ...(MENU.milkshake || []),
-  ...(MENU.drinks || []),
-  ...(MENU.mineral || [])
-];
 
 const ITEM_INDEX = {};
 (function buildIndex(){
@@ -1408,12 +1255,12 @@ function applyUI(){
   const d = document.getElementById('aboutDescText');
   if(d){
     d.innerHTML = (lang==='ru')
-      ? `Villaggio pizza&amp;more.<br><br><b>Как оформить заказ:</b><br>1) Выберите категорию<br>2) Добавьте позиции в корзину<br>3) Выберите доставку/самовывоз и оплату<br>4) Нажмите “${UI[lang].order}”<br><br><b>Часы работы:</b> 11:00–00:00<br><span class="muted">*Цены указаны в сумах.</span>`
+      ? `Villaggio pizza&amp;more.<br><br><b>Как оформить заказ:</b><br>1) Выберите категорию<br>2) Добавьте позиции в корзину<br>3) Выберите доставку/самовывоз и оплату<br>4) Нажмите “${UI[lang].order}”<br><br><b>Часы работы:</b> 11:00–00:00<br><b>Адрес:</b> Самарканд, Узбекистанская ул., 18<br><span class="muted">*Цены указаны в сумах.</span>`
       : (lang==='uz')
-      ? `Villaggio pizza&amp;more.<br><br><b>Buyurtma berish:</b><br>1) Kategoriyani tanlang<br>2) Savatga qo‘shing<br>3) Yetkazib berish/olib ketish va to‘lovni tanlang<br>4) “${UI[lang].order}” tugmasini bosing<br><br><b>Ish vaqti:</b> 11:00–00:00<br><span class="muted">*Narxlar so‘mda.</span>`
-      : (lang==='tr')
-      ? `Villaggio pizza&amp;more.<br><br><b>Sipariş:</b><br>1) Kategori seçin<br>2) Sepete ekleyin<br>3) Teslimat/gel-al ve ödeme seçin<br>4) “${UI[lang].order}” butonuna basın<br><br><b>Çalışma saatleri:</b> 11:00–00:00<br><span class="muted">*Fiyatlar UZS.</span>`
-      : `Villaggio pizza&amp;more.<br><br><b>How to order:</b><br>1) Choose a category<br>2) Add items to cart<br>3) Choose delivery/pickup & payment<br>4) Press “${UI[lang].order}”<br><br><b>Working hours:</b> 11:00–00:00<br><span class="muted">*Prices are in UZS.</span>`;
+      ? `Villaggio pizza&amp;more.<br><br><b>Buyurtma berish:</b><br>1) Kategoriyani tanlang<br>2) Savatga qo‘shing<br>3) Yetkazib berish/olib ketish va to‘lovni tanlang<br>4) “${UI[lang].order}” tugmasini bosing<br><br><b>Ish vaqti:</b> 11:00–00:00<br><b>Manzil:</b> Samarqand, O‘zbekiston ko‘chasi, 18<br><span class="muted">*Narxlar so‘mda.</span>`
+      : (lang==='it')
+      ? `Villaggio pizza&amp;more.<br><br><b>Come ordinare:</b><br>1) Scegli una categoria<br>2) Aggiungi al carrello<br>3) Scegli consegna/ritiro e pagamento<br>4) Premi “${UI[lang].order}”<br><br><b>Orari:</b> 11:00–00:00<br><b>Indirizzo:</b> Samarcanda, via Uzbekistanskaya, 18<br><span class="muted">*I prezzi sono in UZS.</span>`
+      : `Villaggio pizza&amp;more.<br><br><b>How to order:</b><br>1) Choose a category<br>2) Add items to cart<br>3) Choose delivery/pickup & payment<br>4) Press “${UI[lang].order}”<br><br><b>Working hours:</b> 11:00–00:00<br><b>Address:</b> Samarkand, Uzbekistanskaya St., 18<br><span class="muted">*Prices are in UZS.</span>`;
   }
 
   renderWelcome();
@@ -1591,7 +1438,7 @@ function onSearchKey(e){ if(e.key==='Enter') closeSearch(); }
 function matchesQuery(it,q){
   if(!q) return true;
   const all=[
-    it.n?.ru,it.n?.uz,it.n?.en,it.n?.tr,
+    it.n?.ru,it.n?.uz,it.n?.en,it.n?.it,
     String(it.meta||''),
     String(it.id||''),
     String(it.p||'')
@@ -1782,7 +1629,7 @@ function genOrderId(){
   const key=`artcafe_seq_${d.getFullYear()}${mm}${dd}`;
   let n=Number(localStorage.getItem(key)||0)+1;
   localStorage.setItem(key,String(n));
-  return `ARTCAFE-${dd}${mm}-${String(n).padStart(3,'0')}`;
+  return `VILLAGGIO-${dd}${mm}-${String(n).padStart(3,'0')}`;
 }
 
 function normalizePhone(p){
@@ -1874,8 +1721,8 @@ function setLang(l,btn){
 }
 
 try{
-  Telegram.WebApp.setHeaderColor?.('#395B5F');
-  Telegram.WebApp.setBackgroundColor?.('#A7886B');
+  Telegram.WebApp.setHeaderColor?.('#6D1020');
+  Telegram.WebApp.setBackgroundColor?.('#ffffff');
 }catch(_){}
 
 function initDefaults(){
