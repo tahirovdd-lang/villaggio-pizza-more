@@ -559,7 +559,7 @@
 <body>
 
 <div class="header">
-  <img src="images/logo.png?v=12" onerror="this.onerror=null;this.src='logo.png?v=12'" alt="Villaggio pizza&more logo">
+  <img src="images/logo.png?v=20" onerror="this.onerror=null;this.src='logo.png?v=20'" alt="Villaggio pizza&more logo">
 
   <div class="brand-wrap">
     <div class="brand-title">Villaggio</div>
@@ -884,11 +884,54 @@ const CLICK_QR_IMG = "images/CLICK_QR.jpg";
 // images/side_kartofel_derevenskiy_200.png
 // То же самое работает для .JPG .JPEG .PNG
 const IMAGE_EXTS = ["jpg", "jpeg", "png", "JPG", "JPEG", "PNG"];
+
+// ✅ Алиасы фото.
+// Теперь приложение ищет фото не только по ID из кода,
+// но и по коротким именам, которые были даны для загрузки в папку images.
+const PHOTO_ALIASES = {
+  // ПАСТА
+  pasta_lasagna_320: ["lasagna", "pasta_lasagna_320"],
+  pasta_di_mare_360: ["pasta_di_mare", "pasta_di_mare_360"],
+  pasta_fettuccine_alfredo_350: ["fettuccine_alfredo", "pasta_fettuccine_alfredo_350"],
+  pasta_fettuccine_bolognese_350: ["fettuccine_bolognese", "pasta_fettuccine_bolognese_350"],
+  pasta_fettuccine_carbonara_veal_350: [
+    "fettuccine_carbona_ra_veal",
+    "fettuccine_carbonara_veal",
+    "pasta_fettuccine_carbona_ra_veal_350",
+    "pasta_fettuccine_carbonara_veal_350"
+  ],
+
+  // ПИЦЦА — поддерживает и новые, и старые названия
+  pizza_bolognese_420: ["pizza_bolognese_420"],
+  pizza_villaggio_420: ["pizza_villaggio_420"],
+  pizza_carbonara_420: ["pizza_carbonara_420", "pizza_carbona_ra_420"],
+  pizza_margherita_420: ["pizza_margherita_420"],
+  pizza_mortadella_stracciatella_420: ["pizza_mortadella_stracciatella_420"],
+  pizza_pepperoni_420: ["pizza_pepperoni_420"],
+  pizza_pesto_mozzarella_420: ["pizza_pesto_mozzarella_420"],
+  pizza_polo_fungi_420: ["pizza_polo_fungi_420"],
+  pizza_primavere_420: ["pizza_primavere_420", "pizza_primavera_420"],
+  pizza_four_cheese_420: ["pizza_four_cheese_420", "pizza_quattro_formaggi_420"],
+  pizza_light_salted_salmon_600: ["pizza_light_salted_salmon_600", "pizza_salmon_600"],
+  pizza_caesar_420: ["pizza_caesar_420"]
+};
+
+function uniqueList(arr){
+  return [...new Set(arr.filter(Boolean).map(x => String(x).trim()).filter(Boolean))];
+}
+
 function imageCandidates(id){
   const clean = String(id || '').replace(/^images\//,'').replace(/\.(jpg|jpeg|png)$/i,'');
-  const names = [clean, `${clean}_tg`];
+  const baseNames = uniqueList([clean, ...(PHOTO_ALIASES[clean] || [])]);
+
+  const names = [];
+  baseNames.forEach(n => {
+    names.push(n);
+    names.push(`${n}_tg`);
+  });
+
   const out = [];
-  names.forEach(n => IMAGE_EXTS.forEach(ext => out.push(`images/${n}.${ext}`)));
+  uniqueList(names).forEach(n => IMAGE_EXTS.forEach(ext => out.push(`images/${n}.${ext}`)));
   return out;
 }
 function imgFallback(img, id){
@@ -896,10 +939,10 @@ function imgFallback(img, id){
   const i = Number(img.dataset.tryIndex || 0);
   if(i < list.length){
     img.dataset.tryIndex = String(i + 1);
-    img.src = list[i] + '?v=12';
+    img.src = list[i] + '?v=20';
   }else{
     img.onerror = null;
-    img.src = 'images/logo.png?v=12';
+    img.src = 'images/logo.png?v=20';
   }
 }
 function setProductImage(img, id){
@@ -1585,7 +1628,7 @@ function cardHTML(it){
   return `
   <div class="card">
     <div class="img">
-      <img src="images/${id}.jpg?v=12" data-try-index="1" onerror="imgFallback(this,'${id}')" onclick="openImage(event,'${id}')" alt="${escapeHtml(nameOf(id))}">
+      <img src="images/${id}.jpg?v=20" data-try-index="1" onerror="imgFallback(this,'${id}')" onclick="openImage(event,'${id}')" alt="${escapeHtml(nameOf(id))}">
     </div>
     <div class="item-name">${escapeHtml(nameOf(id))}</div>
     <div class="item-meta">${escapeHtml(meta || '')}</div>
