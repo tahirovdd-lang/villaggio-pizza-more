@@ -527,7 +527,7 @@
 <body>
 
 <div class="header">
-  <img src="images/logo.png?v=6" onerror="this.onerror=null;this.src='logo.png?v=6'" alt="Villaggio pizza&more logo">
+  <img src="images/logo.png?v=7" onerror="this.onerror=null;this.src='logo.png?v=7'" alt="Villaggio pizza&more logo">
 
   <div class="brand-wrap">
     <div class="brand-title">Villaggio</div>
@@ -841,7 +841,7 @@ const LEGAL_PHONE_HUMAN = "+998 87 634 39 39";
 const MANAGER_ID = 0;
 const MANAGER_USERNAME = "@villaggio_uz";
 
-const CLICK_QR_IMG = "images/CLICK_QR.jpg";
+const CLICK_QR_IMG = "images/CLICK_QR.jpg?v=7";
 
 // ✅ Исправление фото: приложение пробует все частые форматы и регистры.
 // Загружайте фото в папку images рядом с index.html:
@@ -859,10 +859,10 @@ function imgFallback(img, id){
   const i = Number(img.dataset.tryIndex || 0);
   if(i < list.length){
     img.dataset.tryIndex = String(i + 1);
-    img.src = list[i] + '?v=6';
+    img.src = list[i] + '?v=7';
   }else{
     img.onerror = null;
-    img.src = 'images/logo.png?v=6';
+    img.src = 'images/logo.png?v=7';
   }
 }
 function setProductImage(img, id){
@@ -1505,7 +1505,7 @@ function cardHTML(it){
   return `
   <div class="card">
     <div class="img">
-      <img src="images/${id}.jpg?v=6" data-try-index="1" onerror="imgFallback(this,'${id}')" onclick="openImage(event,'${id}')" alt="${escapeHtml(nameOf(id))}">
+      <img src="images/${id}.jpg?v=7" data-try-index="1" onerror="imgFallback(this,'${id}')" onclick="openImage(event,'${id}')" alt="${escapeHtml(nameOf(id))}">
     </div>
     <div class="item-name">${escapeHtml(nameOf(id))}</div>
     <div class="item-meta">${escapeHtml(meta || '')}</div>
