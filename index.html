@@ -223,6 +223,37 @@
     }
     .counter button:active{transform:scale(.96);}
 
+
+    .cart-items{
+      margin-top:12px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+    .cart-item{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:16px;
+      border:1px solid rgba(0,0,0,.08);
+      background:rgba(109,16,32,.06);
+    }
+    .cart-item-name{font-weight:900;line-height:1.2;}
+    .cart-item-meta{font-size:12px;font-weight:800;opacity:.75;margin-top:3px;}
+    .cart-item-sum{font-weight:900;color:var(--tile);white-space:nowrap;text-align:right;}
+    .cart-empty{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:16px;
+      background:rgba(0,0,0,.03);
+      border:1px solid rgba(0,0,0,.08);
+      font-weight:900;
+      opacity:.75;
+      text-align:center;
+    }
+
     .cart{
       background:rgba(255,255,255,.94);
       color:#1d1d1d;
@@ -746,6 +777,8 @@
     <div style="margin-top:10px; font-weight:900;">
       <span id="totalLabel">Итого</span>: <span id="grandTotal">0</span> <span id="sumWord2">сум</span>
     </div>
+
+    <div class="cart-items" id="cartItems"></div>
 
     <div class="row-title" id="deliveryTitle">Способ получения</div>
     <div class="row-buttons">
@@ -1624,11 +1657,43 @@ function calcItemsSum(){
   for(const id in cart) s += (cart[id]||0) * (ITEM_INDEX[id]?.p||0);
   return s;
 }
+function renderCartItems(){
+  const box = document.getElementById('cartItems');
+  if(!box) return;
+
+  const selected = [];
+  for(const id in cart){
+    const qty = Number(cart[id] || 0);
+    if(qty > 0 && ITEM_INDEX[id]) selected.push({id, qty, it: ITEM_INDEX[id]});
+  }
+
+  if(selected.length === 0){
+    box.innerHTML = `<div class="cart-empty">${escapeHtml(UI[lang].empty)}</div>`;
+    return;
+  }
+
+  box.innerHTML = selected.map(({id, qty, it}) => {
+    const one = Number(it.p || 0);
+    const sum = one * qty;
+    const meta = it.meta ? `<div class="cart-item-meta">${escapeHtml(it.meta)}</div>` : '';
+    return `
+      <div class="cart-item">
+        <div>
+          <div class="cart-item-name">${escapeHtml(nameOf(id))}</div>
+          ${meta}
+          <div class="cart-item-meta">${qty} × ${formatSum(one)} ${escapeHtml(UI[lang].sum)}</div>
+        </div>
+        <div class="cart-item-sum">${formatSum(sum)} ${escapeHtml(UI[lang].sum)}</div>
+      </div>`;
+  }).join('');
+}
+
 function updateTotal(){
   const itemsSum=calcItemsSum();
   total.innerText=formatSum(itemsSum);
   grandTotal.innerText=formatSum(itemsSum);
   stickyTotal.innerText=formatSum(itemsSum);
+  renderCartItems();
 }
 function chg(id,delta){
   cart[id]=Math.max(0,(cart[id]||0)+delta);
