@@ -191,8 +191,9 @@
       display:flex;
       gap:12px;
       padding:14px;
-      justify-content:center;
+      justify-content:flex-start;
       overflow-x:auto;
+      scroll-padding-left:14px;
       scroll-behavior:smooth;
       -webkit-overflow-scrolling:touch;
       overscroll-behavior-x:contain;
@@ -527,7 +528,7 @@
 <body>
 
 <div class="header">
-  <img src="images/logo.png?v=6" onerror="this.onerror=null;this.src='logo.png?v=6'" alt="Villaggio pizza&more logo">
+  <img src="images/logo.png?v=12" onerror="this.onerror=null;this.src='logo.png?v=12'" alt="Villaggio pizza&more logo">
 
   <div class="brand-wrap">
     <div class="brand-title">Villaggio</div>
@@ -852,17 +853,20 @@ const CLICK_QR_IMG = "images/CLICK_QR.jpg";
 const IMAGE_EXTS = ["jpg", "jpeg", "png", "JPG", "JPEG", "PNG"];
 function imageCandidates(id){
   const clean = String(id || '').replace(/^images\//,'').replace(/\.(jpg|jpeg|png)$/i,'');
-  return IMAGE_EXTS.map(ext => `images/${clean}.${ext}`);
+  const names = [clean, `${clean}_tg`];
+  const out = [];
+  names.forEach(n => IMAGE_EXTS.forEach(ext => out.push(`images/${n}.${ext}`)));
+  return out;
 }
 function imgFallback(img, id){
   const list = imageCandidates(id);
   const i = Number(img.dataset.tryIndex || 0);
   if(i < list.length){
     img.dataset.tryIndex = String(i + 1);
-    img.src = list[i] + '?v=6';
+    img.src = list[i] + '?v=12';
   }else{
     img.onerror = null;
-    img.src = 'images/logo.png?v=6';
+    img.src = 'images/logo.png?v=12';
   }
 }
 function setProductImage(img, id){
@@ -1454,6 +1458,8 @@ function renderMainCats(){
     const active = (category===k) ? 'active' : '';
     cats.innerHTML += `<button class="btn cat-btn ${active}" onclick="onMainCatClick('${k}')">${escapeHtml(catLabel(k))}</button>`;
   });
+  // ✅ Ползунок категорий всегда стартует с первой категории слева.
+  requestAnimationFrame(()=>{ cats.scrollLeft = 0; });
 }
 function onMainCatClick(k){
   category = k;
@@ -1546,7 +1552,7 @@ function cardHTML(it){
   return `
   <div class="card">
     <div class="img">
-      <img src="images/${id}.jpg?v=6" data-try-index="1" onerror="imgFallback(this,'${id}')" onclick="openImage(event,'${id}')" alt="${escapeHtml(nameOf(id))}">
+      <img src="images/${id}.jpg?v=12" data-try-index="1" onerror="imgFallback(this,'${id}')" onclick="openImage(event,'${id}')" alt="${escapeHtml(nameOf(id))}">
     </div>
     <div class="item-name">${escapeHtml(nameOf(id))}</div>
     <div class="item-meta">${escapeHtml(meta || '')}</div>
