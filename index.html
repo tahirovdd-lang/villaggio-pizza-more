@@ -559,7 +559,7 @@
 <body>
 
 <div class="header">
-  <img src="images/logo.png?v=20" onerror="this.onerror=null;this.src='logo.png?v=20'" alt="Villaggio pizza&more logo">
+  <img src="images/logo.png?v=50" onerror="this.onerror=null;this.src='logo.png?v=50'" alt="Villaggio pizza&more logo">
 
   <div class="brand-wrap">
     <div class="brand-title">Villaggio</div>
@@ -883,74 +883,138 @@ const CLICK_QR_IMG = "images/CLICK_QR.jpg";
 // images/side_kartofel_derevenskiy_200.jpeg
 // images/side_kartofel_derevenskiy_200.png
 // То же самое работает для .JPG .JPEG .PNG
-const IMAGE_EXTS = ["jpg", "jpeg", "png", "JPG", "JPEG", "PNG"];
+const IMAGE_VERSION = "50";
 
-// ✅ Алиасы фото.
-// Теперь приложение ищет фото не только по ID из кода,
-// но и по коротким именам, которые были даны для загрузки в папку images.
-const PHOTO_ALIASES = {
-  // ПАСТА
-  pasta_lasagna_320: ["lasagna", "pasta_lasagna_320"],
-  pasta_di_mare_360: ["pasta_di_mare", "pasta_di_mare_360"],
-  pasta_fettuccine_alfredo_350: ["fettuccine_alfredo", "pasta_fettuccine_alfredo_350"],
-  pasta_fettuccine_bolognese_350: ["fettuccine_bolognese", "pasta_fettuccine_bolognese_350"],
-  pasta_fettuccine_carbonara_veal_350: [
-    "fettuccine_carbona_ra_veal",
-    "fettuccine_carbonara_veal",
-    "pasta_fettuccine_carbona_ra_veal_350",
-    "pasta_fettuccine_carbonara_veal_350"
-  ],
+// ✅ Быстрая загрузка фото.
+// ВАЖНО: раньше приложение перебирало много вариантов имён и форматов.
+// Это создавало много 404-запросов на GitHub Pages, поэтому фото открывались долго.
+// Теперь для каждого блюда указан точный основной файл.
+// Дополнительно есть только 2 запасных варианта: _tg и png.
+const PHOTO_FILES = {
+  // Гарниры
+  side_kartofel_derevenskiy_200: "side_kartofel_derevenskiy_200.jpg",
+  side_kartofel_fri_200: "side_kartofel_fri_200.jpg",
 
-  // ПИЦЦА — поддерживает и новые, и старые названия
-  pizza_bolognese_420: ["pizza_bolognese_420"],
-  pizza_villaggio_420: ["pizza_villaggio_420"],
-  pizza_carbonara_420: ["pizza_carbonara_420", "pizza_carbona_ra_420"],
-  pizza_margherita_420: ["pizza_margherita_420"],
-  pizza_mortadella_stracciatella_420: ["pizza_mortadella_stracciatella_420"],
-  pizza_pepperoni_420: ["pizza_pepperoni_420"],
-  pizza_pesto_mozzarella_420: ["pizza_pesto_mozzarella_420"],
-  pizza_polo_fungi_420: ["pizza_polo_fungi_420"],
-  pizza_primavere_420: ["pizza_primavere_420", "pizza_primavera_420"],
-  pizza_four_cheese_420: ["pizza_four_cheese_420", "pizza_quattro_formaggi_420"],
-  pizza_light_salted_salmon_600: ["pizza_light_salted_salmon_600", "pizza_salmon_600"],
-  pizza_caesar_420: ["pizza_caesar_420"]
+  // Завтрак
+  breakfast_english_360: "breakfast_english_360.jpg",
+  breakfast_villaggio_350: "breakfast_villaggio_350.jpg",
+  crepes_orange_confit_250: "crepes_orange_confit_250.jpg",
+  crepes_berry_confit_250: "crepes_berry_confit_250.jpg",
+  porridge_oat_berry_250: "porridge_oat_berry_250.jpg",
+  breakfast_french_250: "breakfast_french_250.jpg",
+
+  // Паста
+  pasta_lasagna_320: "pasta_lasagna_320.jpg",
+  pasta_di_mare_360: "pasta_di_mare_360.jpg",
+  pasta_fettuccine_alfredo_350: "pasta_fettuccine_alfredo_350.jpg",
+  pasta_fettuccine_bolognese_350: "pasta_fettuccine_bolognese_350.jpg",
+  pasta_fettuccine_carbonara_veal_350: "pasta_fettuccine_carbonara_veal_350.jpg",
+  pasta_fettuccine_carbona_ra_veal_350: "pasta_fettuccine_carbona_ra_veal_350.jpg",
+
+  // Пицца
+  pizza_bolognese_420: "pizza_bolognese_420.jpg",
+  pizza_villaggio_420: "pizza_villaggio_420.jpg",
+  pizza_carbona_ra_420: "pizza_carbona_ra_420.jpg",
+  pizza_carbonara_420: "pizza_carbona_ra_420.jpg",
+  pizza_margherita_420: "pizza_margherita_420.jpg",
+  pizza_mortadella_stracciatella_420: "pizza_mortadella_stracciatella_420.jpg",
+  pizza_pepperoni_420: "pizza_pepperoni_420.jpg",
+  pizza_pesto_mozzarella_420: "pizza_pesto_mozzarella_420.jpg",
+  pizza_polo_fungi_420: "pizza_polo_fungi_420.jpg",
+  pizza_primavera_420: "pizza_primavera_420.jpg",
+  pizza_primavere_420: "pizza_primavera_420.jpg",
+  pizza_quattro_formaggi_420: "pizza_quattro_formaggi_420.jpg",
+  pizza_four_cheese_420: "pizza_quattro_formaggi_420.jpg",
+  pizza_salmon_600: "pizza_salmon_600.jpg",
+  pizza_light_salted_salmon_600: "pizza_salmon_600.jpg",
+  pizza_caesar_420: "pizza_caesar_420.jpg",
+
+  // Равиоли
+  ravioli_chicken_mushrooms_350: "ravioli_chicken_mushrooms_350.jpg",
+  ravioli_chicken_mushroom_350: "ravioli_chicken_mushroom_350.jpg",
+  ravioli_salmon_350: "ravioli_salmon_350.jpg",
+  ravioli_veal_350: "ravioli_veal_350.jpg",
+  ravioli_spinach_ricotta_350: "ravioli_spinach_ricotta_350.jpg",
+
+  // Салаты
+  salad_di_mare_250: "salad_di_mare_250.jpg",
+  salad_caprese_300: "salad_caprese_300.jpg",
+  salad_nicoise_tuna_250: "salad_nicoise_tuna_250.jpg",
+  salad_caesar_chicken_320: "salad_caesar_chicken_320.jpg",
+  salad_burrata_300: "salad_burrata_300.jpg",
+  salad_greek_320: "salad_greek_320.jpg",
+  salad_crispy_eggplant_300: "salad_crispy_eggplant_300.jpg",
+  salad_caesar_shrimp_250: "salad_caesar_shrimp_250.jpg",
+
+  // Супы
+  soup_stracciatello_250: "soup_stracciatello_250.jpg",
+  soup_stracciatella_250: "soup_stracciatella_250.jpg",
+
+  // Холодные напитки
+  drink_pomegranate_orange_450: "drink_pomegranate_orange_450.jpg",
+  drink_raspberry_passionfruit_450: "drink_raspberry_passionfruit_450.jpg",
+  drink_mojito_450: "drink_mojito_450.jpg",
+  drink_citrus_barberry_450: "drink_citrus_barberry_450.jpg",
+  drink_apple_kiwi_450: "drink_apple_kiwi_450.jpg"
 };
 
-function uniqueList(arr){
-  return [...new Set(arr.filter(Boolean).map(x => String(x).trim()).filter(Boolean))];
+function withVersion(path){
+  return `${path}?v=${IMAGE_VERSION}`;
+}
+
+function fileBaseName(file){
+  return String(file || '').replace(/\.(jpg|jpeg|png|webp)$/i, '');
 }
 
 function imageCandidates(id){
-  const clean = String(id || '').replace(/^images\//,'').replace(/\.(jpg|jpeg|png)$/i,'');
-  const baseNames = uniqueList([clean, ...(PHOTO_ALIASES[clean] || [])]);
+  const clean = String(id || '').replace(/^images\//,'').replace(/\.(jpg|jpeg|png|webp)$/i,'');
+  const primary = PHOTO_FILES[clean] || `${clean}.jpg`;
+  const base = fileBaseName(primary);
 
-  const names = [];
-  baseNames.forEach(n => {
-    names.push(n);
-    names.push(`${n}_tg`);
-  });
+  // Минимум запросов:
+  // 1) точный файл
+  // 2) _tg, если ты загрузил сжатую версию
+  // 3) png, если фото было png
+  const list = [
+    `images/${primary}`,
+    `images/${base}_tg.jpg`,
+    `images/${base}.png`
+  ];
 
-  const out = [];
-  uniqueList(names).forEach(n => IMAGE_EXTS.forEach(ext => out.push(`images/${n}.${ext}`)));
-  return out;
+  return [...new Set(list)];
 }
+
 function imgFallback(img, id){
   const list = imageCandidates(id);
   const i = Number(img.dataset.tryIndex || 0);
   if(i < list.length){
     img.dataset.tryIndex = String(i + 1);
-    img.src = list[i] + '?v=20';
+    img.src = withVersion(list[i]);
   }else{
     img.onerror = null;
-    img.src = 'images/logo.png?v=20';
+    img.src = withVersion('images/logo.png');
   }
 }
+
 function setProductImage(img, id){
   if(!img) return;
   img.dataset.tryIndex = '0';
   img.onerror = function(){ imgFallback(this, id); };
   imgFallback(img, id);
 }
+
+function preloadImageById(id){
+  const first = imageCandidates(id)[0];
+  if(!first) return;
+  const im = new Image();
+  im.src = withVersion(first);
+}
+
+function preloadCategoryImages(catKey){
+  const list = MENU?.[catKey] || [];
+  list.forEach(it => preloadImageById(it.id));
+}
+
 
 const ONLINE_PAY = {
   receiver: "Tahirov Daler",
@@ -1268,15 +1332,15 @@ const MENU = {
   pizza: [
     mkFood('pizza_bolognese_420', {ru:'Пицца Болоньезе', uz:'Boloneze pitsa', en:'Bolognese pizza', it:'Pizza Bolognese'}, '420 гр', 90000, 'pizza'),
     mkFood('pizza_villaggio_420', {ru:'Пицца Вилладжио', uz:'Villaggio pitsa', en:'Villaggio pizza', it:'Pizza Villaggio'}, '420 гр', 105000, 'pizza'),
-    mkFood('pizza_carbonara_420', {ru:'Пицца Карбонара', uz:'Karbonara pitsa', en:'Carbonara pizza', it:'Pizza Carbonara'}, '420 гр', 85000, 'pizza'),
+    mkFood('pizza_carbona_ra_420', {ru:'Пицца Карбонара', uz:'Karbonara pitsa', en:'Carbonara pizza', it:'Pizza Carbonara'}, '420 гр', 85000, 'pizza'),
     mkFood('pizza_margherita_420', {ru:'Пицца Маргарита', uz:'Margarita pitsa', en:'Margherita pizza', it:'Pizza Margherita'}, '420 гр', 65000, 'pizza'),
     mkFood('pizza_mortadella_stracciatella_420', {ru:'Пицца Мортаделла со страчателлой', uz:'Mortadella va stracciatella pitsasi', en:'Mortadella pizza with stracciatella', it:'Pizza mortadella con stracciatella'}, '420 гр', 118000, 'pizza'),
     mkFood('pizza_pepperoni_420', {ru:'Пицца Пепперони', uz:'Pepperoni pitsa', en:'Pepperoni pizza', it:'Pizza Pepperoni'}, '420 гр', 78000, 'pizza'),
     mkFood('pizza_pesto_mozzarella_420', {ru:'Пицца Песто с моцареллой', uz:'Pesto va mozzarella pitsasi', en:'Pesto pizza with mozzarella', it:'Pizza pesto con mozzarella'}, '420 гр', 78000, 'pizza'),
     mkFood('pizza_polo_fungi_420', {ru:'Пицца Поло Фунги', uz:'Pollo funghi pitsa', en:'Pollo funghi pizza', it:'Pizza pollo funghi'}, '420 гр', 76000, 'pizza'),
-    mkFood('pizza_primavere_420', {ru:'Пицца Примавере', uz:'Primavera pitsa', en:'Primavera pizza', it:'Pizza primavera'}, '420 гр', 102000, 'pizza'),
-    mkFood('pizza_four_cheese_420', {ru:'Пицца Четыре сыра', uz:'To‘rt pishloqli pitsa', en:'Four cheese pizza', it:'Pizza quattro formaggi'}, '420 гр', 92000, 'pizza'),
-    mkFood('pizza_light_salted_salmon_600', {ru:'Пицца со слабосоленым лососем', uz:'Yengil tuzlangan lososli pitsa', en:'Pizza with lightly salted salmon', it:'Pizza con salmone leggermente salato'}, '600 гр', 107000, 'pizza'),
+    mkFood('pizza_primavera_420', {ru:'Пицца Примавере', uz:'Primavera pitsa', en:'Primavera pizza', it:'Pizza primavera'}, '420 гр', 102000, 'pizza'),
+    mkFood('pizza_quattro_formaggi_420', {ru:'Пицца Четыре сыра', uz:'To‘rt pishloqli pitsa', en:'Four cheese pizza', it:'Pizza quattro formaggi'}, '420 гр', 92000, 'pizza'),
+    mkFood('pizza_salmon_600', {ru:'Пицца со слабосоленым лососем', uz:'Yengil tuzlangan lososli pitsa', en:'Pizza with lightly salted salmon', it:'Pizza con salmone leggermente salato'}, '600 гр', 107000, 'pizza'),
     mkFood('pizza_caesar_420', {ru:'Пицца Цезарь', uz:'Sezar pitsa', en:'Caesar pizza', it:'Pizza Caesar'}, '420 гр', 84000, 'pizza')
   ],
   ravioli: [
@@ -1417,6 +1481,7 @@ function applyUI(){
   updateTotal();
   updateFulfillmentUI();
   updatePaymentUI();
+  preloadCategoryImages(category);
   setTimeout(syncStickyHeight, 50);
 }
 
@@ -1541,7 +1606,9 @@ function onMainCatClick(k){
   category = k;
   closeSearch();
   renderMainCats();
+  preloadCategoryImages(category);
   renderProducts();
+  try{ cats.scrollLeft = 0; }catch(_){}
 }
 
 function openSubcats(g){
@@ -1628,7 +1695,7 @@ function cardHTML(it){
   return `
   <div class="card">
     <div class="img">
-      <img src="images/${id}.jpg?v=20" data-try-index="1" onerror="imgFallback(this,'${id}')" onclick="openImage(event,'${id}')" alt="${escapeHtml(nameOf(id))}">
+      <img src="${withVersion(imageCandidates(id)[0])}" data-try-index="1" onerror="imgFallback(this,'${id}')" onclick="openImage(event,'${id}')" alt="${escapeHtml(nameOf(id))}" loading="eager" decoding="async" fetchpriority="high">
     </div>
     <div class="item-name">${escapeHtml(nameOf(id))}</div>
     <div class="item-meta">${escapeHtml(meta || '')}</div>
@@ -1644,6 +1711,7 @@ function cardHTML(it){
 function renderProducts(){
   products.innerHTML='';
   const list = MENU[category] || [];
+  preloadCategoryImages(category);
   if(!list.length){
     products.innerHTML = `<div class="card" style="grid-column:1/-1;font-weight:900;">${escapeHtml(UI[lang].nothing)}</div>`;
     return;
