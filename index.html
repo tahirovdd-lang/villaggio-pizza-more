@@ -527,7 +527,7 @@
 <body>
 
 <div class="header">
-  <img src="images/logo.png?v=7" onerror="this.onerror=null;this.src='logo.png?v=7'" alt="Villaggio pizza&more logo">
+  <img src="images/logo.png?v=6" onerror="this.onerror=null;this.src='logo.png?v=6'" alt="Villaggio pizza&more logo">
 
   <div class="brand-wrap">
     <div class="brand-title">Villaggio</div>
@@ -841,7 +841,7 @@ const LEGAL_PHONE_HUMAN = "+998 87 634 39 39";
 const MANAGER_ID = 0;
 const MANAGER_USERNAME = "@villaggio_uz";
 
-const CLICK_QR_IMG = "images/CLICK_QR.jpg?v=7";
+const CLICK_QR_IMG = "images/CLICK_QR.jpg";
 
 // ✅ Исправление фото: приложение пробует все частые форматы и регистры.
 // Загружайте фото в папку images рядом с index.html:
@@ -859,10 +859,10 @@ function imgFallback(img, id){
   const i = Number(img.dataset.tryIndex || 0);
   if(i < list.length){
     img.dataset.tryIndex = String(i + 1);
-    img.src = list[i] + '?v=7';
+    img.src = list[i] + '?v=6';
   }else{
     img.onerror = null;
-    img.src = 'images/logo.png?v=7';
+    img.src = 'images/logo.png?v=6';
   }
 }
 function setProductImage(img, id){
@@ -1173,17 +1173,58 @@ const MENU = {
   breakfast: [
     mkFood('breakfast_english_360', {ru:'Английский завтрак', uz:'Inglizcha nonushta', en:'English breakfast', it:'Colazione inglese'}, '360 гр', 78000, 'breakfast'),
     mkFood('breakfast_villaggio_350', {ru:'Завтрак Villaggio', uz:'Villaggio nonushtasi', en:'Villaggio breakfast', it:'Colazione Villaggio'}, '350 гр', 55000, 'breakfast'),
-    mkFood('breakfast_french_250', {ru:'Французский завтрак', uz:'Fransuzcha nonushta', en:'French breakfast', it:'Colazione francese'}, '250 гр', 68000, 'breakfast'),
-    mkFood('porridge_oat_berry_250', {ru:'Овсяная каша ягодная', uz:'Rezavorli suli bo‘tqasi', en:'Berry oatmeal porridge', it:'Porridge d’avena ai frutti di bosco'}, '250 гр', 37000, 'breakfast'),
+    mkFood('crepes_orange_confit_250', {ru:'Крипсы с апельсиновым конфитюром', uz:'Apelsin konfiturli kripslar', en:'Crepes with orange confiture', it:'Crêpes con confettura d’arancia'}, '250 гр', 34000, 'breakfast'),
     mkFood('crepes_berry_confit_250', {ru:'Крипсы с ягодным конфитюром', uz:'Rezavor konfiturli kripslar', en:'Crepes with berry confiture', it:'Crêpes con confettura ai frutti di bosco'}, '250 гр', 34000, 'breakfast'),
-    mkFood('crepes_orange_confit_250', {ru:'Крипсы с апельсиновым конфитюром', uz:'Apelsin konfiturli kripslar', en:'Crepes with orange confiture', it:'Crêpes con confettura d’arancia'}, '250 гр', 34000, 'breakfast')
+    mkFood('porridge_oat_berry_250', {ru:'Овсяная каша ягодная', uz:'Rezavorli suli bo‘tqasi', en:'Berry oatmeal porridge', it:'Porridge d’avena ai frutti di bosco'}, '250 гр', 37000, 'breakfast'),
+    mkFood('breakfast_french_250', {ru:'Французский завтрак', uz:'Fransuzcha nonushta', en:'French breakfast', it:'Colazione francese'}, '250 гр', 68000, 'breakfast')
   ],
-  pasta: [],
-  pizza: [],
-  ravioli: [],
-  salads: [],
-  soups: [],
-  cold_drinks: []
+  pasta: [
+    mkFood('pasta_lasagna_320', {ru:'Лазанья', uz:'Lazanya', en:'Lasagna', it:'Lasagna'}, '320 гр', 112000, 'pasta'),
+    mkFood('pasta_di_mare_360', {ru:'Паста Ди маре', uz:'Di mare pasta', en:'Pasta di mare', it:'Pasta di mare'}, '360 гр', 142000, 'pasta'),
+    mkFood('pasta_fettuccine_alfredo_350', {ru:'Паста фетучини Альфредо', uz:'Fettuccine Alfredo pasta', en:'Fettuccine Alfredo pasta', it:'Fettuccine Alfredo'}, '350 гр', 79000, 'pasta'),
+    mkFood('pasta_fettuccine_bolognese_350', {ru:'Паста фетучини Болоньезе', uz:'Fettuccine Bolognese pasta', en:'Fettuccine Bolognese pasta', it:'Fettuccine Bolognese'}, '350 гр', 79000, 'pasta'),
+    mkFood('pasta_fettuccine_carbonara_veal_350', {ru:'Паста фетучини Карбонара с телятиной', uz:'Buzoq go‘shtli fettuccine Carbonara', en:'Fettuccine Carbonara with veal', it:'Fettuccine Carbonara con vitello'}, '350 гр', 72000, 'pasta')
+  ],
+  pizza: [
+    mkFood('pizza_bolognese_420', {ru:'Пицца Болоньезе', uz:'Boloneze pitsa', en:'Bolognese pizza', it:'Pizza Bolognese'}, '420 гр', 90000, 'pizza'),
+    mkFood('pizza_villaggio_420', {ru:'Пицца Вилладжио', uz:'Villaggio pitsa', en:'Villaggio pizza', it:'Pizza Villaggio'}, '420 гр', 105000, 'pizza'),
+    mkFood('pizza_carbonara_420', {ru:'Пицца Карбонара', uz:'Karbonara pitsa', en:'Carbonara pizza', it:'Pizza Carbonara'}, '420 гр', 85000, 'pizza'),
+    mkFood('pizza_margherita_420', {ru:'Пицца Маргарита', uz:'Margarita pitsa', en:'Margherita pizza', it:'Pizza Margherita'}, '420 гр', 65000, 'pizza'),
+    mkFood('pizza_mortadella_stracciatella_420', {ru:'Пицца Мортаделла со страчателлой', uz:'Mortadella va stracciatella pitsasi', en:'Mortadella pizza with stracciatella', it:'Pizza mortadella con stracciatella'}, '420 гр', 118000, 'pizza'),
+    mkFood('pizza_pepperoni_420', {ru:'Пицца Пепперони', uz:'Pepperoni pitsa', en:'Pepperoni pizza', it:'Pizza Pepperoni'}, '420 гр', 78000, 'pizza'),
+    mkFood('pizza_pesto_mozzarella_420', {ru:'Пицца Песто с моцареллой', uz:'Pesto va mozzarella pitsasi', en:'Pesto pizza with mozzarella', it:'Pizza pesto con mozzarella'}, '420 гр', 78000, 'pizza'),
+    mkFood('pizza_polo_fungi_420', {ru:'Пицца Поло Фунги', uz:'Pollo funghi pitsa', en:'Pollo funghi pizza', it:'Pizza pollo funghi'}, '420 гр', 76000, 'pizza'),
+    mkFood('pizza_primavere_420', {ru:'Пицца Примавере', uz:'Primavera pitsa', en:'Primavera pizza', it:'Pizza primavera'}, '420 гр', 102000, 'pizza'),
+    mkFood('pizza_four_cheese_420', {ru:'Пицца Четыре сыра', uz:'To‘rt pishloqli pitsa', en:'Four cheese pizza', it:'Pizza quattro formaggi'}, '420 гр', 92000, 'pizza'),
+    mkFood('pizza_light_salted_salmon_600', {ru:'Пицца со слабосоленым лососем', uz:'Yengil tuzlangan lososli pitsa', en:'Pizza with lightly salted salmon', it:'Pizza con salmone leggermente salato'}, '600 гр', 107000, 'pizza'),
+    mkFood('pizza_caesar_420', {ru:'Пицца Цезарь', uz:'Sezar pitsa', en:'Caesar pizza', it:'Pizza Caesar'}, '420 гр', 84000, 'pizza')
+  ],
+  ravioli: [
+    mkFood('ravioli_chicken_mushrooms_350', {ru:'Равиоли с курицей и шампиньонами', uz:'Tovuq va shampinonli ravioli', en:'Ravioli with chicken and mushrooms', it:'Ravioli con pollo e champignon'}, '350 гр', 72000, 'ravioli'),
+    mkFood('ravioli_salmon_350', {ru:'Равиоли с лососем', uz:'Lososli ravioli', en:'Ravioli with salmon', it:'Ravioli al salmone'}, '350 гр', 98000, 'ravioli'),
+    mkFood('ravioli_veal_350', {ru:'Равиоли с телятиной', uz:'Buzoq go‘shtli ravioli', en:'Ravioli with veal', it:'Ravioli con vitello'}, '350 гр', 82000, 'ravioli'),
+    mkFood('ravioli_spinach_ricotta_350', {ru:'Равиоли со шпинатом и рикоттой', uz:'Ismaloq va rikottali ravioli', en:'Ravioli with spinach and ricotta', it:'Ravioli con spinaci e ricotta'}, '350 гр', 77000, 'ravioli')
+  ],
+  salads: [
+    mkFood('salad_di_mare_250', {ru:'Салат Ди маре', uz:'Di mare salati', en:'Di mare salad', it:'Insalata di mare'}, '250 гр', 152000, 'salads'),
+    mkFood('salad_caprese_300', {ru:'Салат Капрезе', uz:'Kapreze salati', en:'Caprese salad', it:'Insalata caprese'}, '300 гр', 75000, 'salads'),
+    mkFood('salad_nicoise_tuna_250', {ru:'Салат Нисуаз с тунцом', uz:'Tunetsli Nisuaz salati', en:'Nicoise salad with tuna', it:'Insalata nizzarda con tonno'}, '250 гр', 105000, 'salads'),
+    mkFood('salad_caesar_chicken_320', {ru:'Салат Цезарь с курицей', uz:'Tovuqli Sezar salati', en:'Caesar salad with chicken', it:'Insalata Caesar con pollo'}, '320 гр', 68000, 'salads'),
+    mkFood('salad_burrata_300', {ru:'Салат буратта', uz:'Burrata salati', en:'Burrata salad', it:'Insalata burrata'}, '300 гр', 107000, 'salads'),
+    mkFood('salad_greek_320', {ru:'Салат Греческий', uz:'Yunon salati', en:'Greek salad', it:'Insalata greca'}, '320 гр', 70000, 'salads'),
+    mkFood('salad_crispy_eggplant_300', {ru:'Салат Хрустащие баклажаны', uz:'Qarsildoq baqlajon salati', en:'Crispy eggplant salad', it:'Insalata di melanzane croccanti'}, '300 гр', 66000, 'salads'),
+    mkFood('salad_caesar_shrimp_250', {ru:'Салат Цезарь с креветками', uz:'Krevetkali Sezar salati', en:'Caesar salad with shrimp', it:'Insalata Caesar con gamberi'}, '250 гр', 118000, 'salads')
+  ],
+  soups: [
+    mkFood('soup_stracciatello_250', {ru:'Суп страчателло', uz:'Stracciatello sho‘rvasi', en:'Stracciatello soup', it:'Zuppa stracciatella'}, '250 гр', 48000, 'soups')
+  ],
+  cold_drinks: [
+    mkFood('drink_pomegranate_orange_450', {ru:'Гранат-апельсин', uz:'Anor-apelsin', en:'Pomegranate-orange', it:'Melograno-arancia'}, '450 мл', 39000, 'cold_drinks'),
+    mkFood('drink_raspberry_passionfruit_450', {ru:'Малина-маракуйя', uz:'Malina-marakuya', en:'Raspberry-passion fruit', it:'Lampone-frutto della passione'}, '450 мл', 41000, 'cold_drinks'),
+    mkFood('drink_mojito_450', {ru:'Мохито', uz:'Moxito', en:'Mojito', it:'Mojito'}, '450 мл', 34000, 'cold_drinks'),
+    mkFood('drink_citrus_barberry_450', {ru:'Цитрус-барбарис', uz:'Sitrus-zirk', en:'Citrus-barberry', it:'Agrumi-crespino'}, '450 мл', 43000, 'cold_drinks'),
+    mkFood('drink_apple_kiwi_450', {ru:'Яблоко-киви', uz:'Olma-kivi', en:'Apple-kiwi', it:'Mela-kiwi'}, '450 мл', 39000, 'cold_drinks')
+  ]
 };
 
 const ITEM_INDEX = {};
@@ -1505,7 +1546,7 @@ function cardHTML(it){
   return `
   <div class="card">
     <div class="img">
-      <img src="images/${id}.jpg?v=7" data-try-index="1" onerror="imgFallback(this,'${id}')" onclick="openImage(event,'${id}')" alt="${escapeHtml(nameOf(id))}">
+      <img src="images/${id}.jpg?v=6" data-try-index="1" onerror="imgFallback(this,'${id}')" onclick="openImage(event,'${id}')" alt="${escapeHtml(nameOf(id))}">
     </div>
     <div class="item-name">${escapeHtml(nameOf(id))}</div>
     <div class="item-meta">${escapeHtml(meta || '')}</div>
