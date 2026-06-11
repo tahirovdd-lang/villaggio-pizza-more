@@ -527,7 +527,7 @@
 <body>
 
 <div class="header">
-  <img src="images/logo.png" onerror="this.src='logo.png'" alt="Villaggio pizza&more logo">
+  <img src="images/logo.png?v=6" onerror="this.onerror=null;this.src='logo.png?v=6'" alt="Villaggio pizza&more logo">
 
   <div class="brand-wrap">
     <div class="brand-title">Villaggio</div>
@@ -842,6 +842,35 @@ const MANAGER_ID = 0;
 const MANAGER_USERNAME = "@villaggio_uz";
 
 const CLICK_QR_IMG = "images/CLICK_QR.jpg";
+
+// ✅ Исправление фото: приложение пробует все частые форматы и регистры.
+// Загружайте фото в папку images рядом с index.html:
+// images/side_kartofel_derevenskiy_200.jpg
+// images/side_kartofel_derevenskiy_200.jpeg
+// images/side_kartofel_derevenskiy_200.png
+// То же самое работает для .JPG .JPEG .PNG
+const IMAGE_EXTS = ["jpg", "jpeg", "png", "JPG", "JPEG", "PNG"];
+function imageCandidates(id){
+  const clean = String(id || '').replace(/^images\//,'').replace(/\.(jpg|jpeg|png)$/i,'');
+  return IMAGE_EXTS.map(ext => `images/${clean}.${ext}`);
+}
+function imgFallback(img, id){
+  const list = imageCandidates(id);
+  const i = Number(img.dataset.tryIndex || 0);
+  if(i < list.length){
+    img.dataset.tryIndex = String(i + 1);
+    img.src = list[i] + '?v=6';
+  }else{
+    img.onerror = null;
+    img.src = 'images/logo.png?v=6';
+  }
+}
+function setProductImage(img, id){
+  if(!img) return;
+  img.dataset.tryIndex = '0';
+  img.onerror = function(){ imgFallback(this, id); };
+  imgFallback(img, id);
+}
 
 const ONLINE_PAY = {
   receiver: "Tahirov Daler",
@@ -1476,7 +1505,7 @@ function cardHTML(it){
   return `
   <div class="card">
     <div class="img">
-      <img src="${it.img}" onerror="this.src='images/logo.png'" onclick="openImage(event,'${id}')">
+      <img src="images/${id}.jpg?v=6" data-try-index="1" onerror="imgFallback(this,'${id}')" onclick="openImage(event,'${id}')" alt="${escapeHtml(nameOf(id))}">
     </div>
     <div class="item-name">${escapeHtml(nameOf(id))}</div>
     <div class="item-meta">${escapeHtml(meta || '')}</div>
@@ -1508,8 +1537,7 @@ function openImage(e,id){
   if(!it) return;
 
   imgModalTitle.innerText = nameOf(id);
-  imgModalImg.src = it.img || 'images/logo.png';
-  imgModalImg.onerror=function(){this.onerror=null;this.src='images/logo.png';};
+  setProductImage(imgModalImg, id);
 
   const meta = `${UI[lang].metaPrefix}: ${it.meta || '—'}\n${UI[lang].price}: ${formatSum(it.p)} ${UI[lang].sum}`;
   imgDescTitle.innerText = nameOf(id);
